@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/unstoppable-domains-resolver/static/css/main.073c9b0a.css",
+    "main.js": "/unstoppable-domains-resolver/static/js/main.9b4dee5e.js",
+    "static/js/787.d60320a0.chunk.js": "/unstoppable-domains-resolver/static/js/787.d60320a0.chunk.js",
+    "index.html": "/unstoppable-domains-resolver/index.html",
+    "main.073c9b0a.css.map": "/unstoppable-domains-resolver/static/css/main.073c9b0a.css.map",
+    "main.9b4dee5e.js.map": "/unstoppable-domains-resolver/static/js/main.9b4dee5e.js.map",
+    "787.d60320a0.chunk.js.map": "/unstoppable-domains-resolver/static/js/787.d60320a0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.9b4dee5e.js"
+  ]
+}
