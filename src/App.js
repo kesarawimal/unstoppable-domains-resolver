@@ -59,7 +59,7 @@ class App extends Component {
                     item.header = 'Website';
                     item.description =
                         <div className='description'><a href={'https://dweb.link/ipfs/' + this.state.data[2][0]}
-                                                                target='_blank'><Icon
+                                                        target='_blank'><Icon
                             name='globe'/>{'https://dweb.link/ipfs/' + this.state.data[2][0]}</a></div>;
 
                     items.push(item);
@@ -146,8 +146,8 @@ class App extends Component {
                                                         <Icon name='cogs'/>
                                                         <Header.Content>
                                                             Unstoppable Domains Resolver
-                                                            <Header.Subheader>Resolve any NFT domain to view wrapped
-                                                                content</Header.Subheader>
+                                                            <Header.Subheader>Resolve any NFT domain to fetch wrapped
+                                                                data</Header.Subheader>
                                                         </Header.Content>
                                                     </Header>
                                                 </Menu.Item>
@@ -165,11 +165,21 @@ class App extends Component {
                                     <Card.Content>
                                         <Grid centered>
                                             <Grid.Row>
+                                                <Header as='h4' style={{padding: '0 10px'}}>
+                                                    This open-source project will help you to resolve any unstoppable
+                                                    domain or NFT domain and will return wrapped NFT, wallet
+                                                    addresses, and more importantly the web3 website URL. The website
+                                                    link will be organized in a way that any standard web browser can
+                                                    directly access.
+                                                </Header>
                                                 <form onSubmit={this.onSubmit}>
                                                     <Input size='huge' type='text' placeholder='Search for NFT domains'
                                                            action>
                                                         <input value={this.state.domain}
-                                                            onChange={event => this.setState({domain: event.target.value, data: []})}/>
+                                                               onChange={event => this.setState({
+                                                                   domain: event.target.value,
+                                                                   data: []
+                                                               })}/>
                                                         <Button loading={this.state.loading} size='big' secondary
                                                                 type='submit'>Resolve</Button>
                                                     </Input>
