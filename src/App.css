@@ -1,3 +1,7 @@
 .App {
     padding-top: 10px;
 }
+
+.cardAddress {
+    overflow: hidden;
+}

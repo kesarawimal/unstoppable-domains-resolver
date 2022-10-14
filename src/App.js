@@ -1,7 +1,7 @@
 import {contractETH, contractMATIC} from './contract';
 import './App.css';
 import React, {Component} from "react";
-import {Input, Button, Container, Card, Grid, Header, Icon, Menu} from 'semantic-ui-react';
+import {Input, Button, Container, Card, Grid, Header, Icon, Menu, Image} from 'semantic-ui-react';
 import namehash from "./namehash";
 
 class App extends Component {
@@ -100,7 +100,27 @@ class App extends Component {
 
             return (
                 <Card.Content>
-                    <Card.Group itemsPerRow={1} centered items={items}/>
+                    <Grid centered>
+                        <Grid.Row>
+                            <Grid.Column width={12}>
+                                <Card centered>
+                                    <Image src={'https://metadata.unstoppabledomains.com/image-src/' + this.state.domain + '.svg'}
+                                           wrapped ui={false}/>
+                                    <Card.Content>
+                                        <Card.Header>{this.state.domain}</Card.Header>
+                                        <Card.Meta className='cardAddress'>
+                                            <Card.Meta>{this.state.data['owner']}</Card.Meta>
+                                        </Card.Meta>
+                                    </Card.Content>
+                                    <Card.Content extra>
+                                        <a href={'https://opensea.io/assets?search[query]=' + this.state.domain}
+                                           target='_blank'><Icon name='linkify'/>View OpenSea</a>
+                                    </Card.Content>
+                                </Card>
+                                <Card.Group centered itemsPerRow={1} items={items}/>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Card.Content>
             );
         }
@@ -117,7 +137,8 @@ class App extends Component {
                                     <Card.Content>
                                         <Card.Header>
                                             <Menu>
-                                                <Menu.Item href='/'>
+                                                <Menu.Item
+                                                    href='https://kesarawimal.github.io/unstoppable-domains-resolver'>
                                                     <Header as='h2'>
                                                         <Icon name='cogs'/>
                                                         <Header.Content>
@@ -146,7 +167,8 @@ class App extends Component {
                                                            action>
                                                         <input
                                                             onChange={event => this.setState({domain: event.target.value})}/>
-                                                        <Button loading={this.state.loading} size='big' secondary type='submit'>Resolve</Button>
+                                                        <Button loading={this.state.loading} size='big' secondary
+                                                                type='submit'>Resolve</Button>
                                                     </Input>
                                                 </form>
                                             </Grid.Row>
