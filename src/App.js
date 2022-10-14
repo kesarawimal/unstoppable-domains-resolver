@@ -32,19 +32,35 @@ class App extends Component {
     showResults() {
         if (this.state.data.length > 0) {
             let items = [];
+            let cardImage = '';
 
             if (this.state.data['owner'] === "0x0000000000000000000000000000000000000000") {
                 const item = {};
                 item.header = 'Not Available!';
-                item.description = 'Not found!';
+                item.description = 'It seems like the domain that you are looking for is either not minted or invalid.';
 
                 items.push(item);
             } else {
+                cardImage = <Card centered>
+                    <Image
+                        src={'https://metadata.unstoppabledomains.com/image-src/' + this.state.domain + '.svg'}
+                        wrapped ui={false}/>
+                    <Card.Content>
+                        <Card.Header>{this.state.domain}</Card.Header>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <a href={'https://opensea.io/assets?search[query]=' + this.state.domain}
+                           target='_blank'><Icon name='linkify'/>View OpenSea</a>
+                    </Card.Content>
+                </Card>;
+
                 if (this.state.data[2][0] !== "") {
                     const item = {};
                     item.header = 'Website';
-                    item.description = 'https://dweb.link/ipfs/' + this.state.data[2][0];
-                    item.href = 'https://dweb.link/ipfs/' + this.state.data[2][0];
+                    item.description =
+                        <div className='description'><a href={'https://dweb.link/ipfs/' + this.state.data[2][0]}
+                                                                target='_blank'><Icon
+                            name='globe'/>{'https://dweb.link/ipfs/' + this.state.data[2][0]}</a></div>;
 
                     items.push(item);
                 }
@@ -103,20 +119,7 @@ class App extends Component {
                     <Grid centered>
                         <Grid.Row>
                             <Grid.Column width={12}>
-                                <Card centered>
-                                    <Image src={'https://metadata.unstoppabledomains.com/image-src/' + this.state.domain + '.svg'}
-                                           wrapped ui={false}/>
-                                    <Card.Content>
-                                        <Card.Header>{this.state.domain}</Card.Header>
-                                        <Card.Meta className='cardAddress'>
-                                            <Card.Meta>{this.state.data['owner']}</Card.Meta>
-                                        </Card.Meta>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <a href={'https://opensea.io/assets?search[query]=' + this.state.domain}
-                                           target='_blank'><Icon name='linkify'/>View OpenSea</a>
-                                    </Card.Content>
-                                </Card>
+                                {cardImage}
                                 <Card.Group centered itemsPerRow={1} items={items}/>
                             </Grid.Column>
                         </Grid.Row>
@@ -165,7 +168,7 @@ class App extends Component {
                                                 <form onSubmit={this.onSubmit}>
                                                     <Input size='huge' type='text' placeholder='Search for NFT domains'
                                                            action>
-                                                        <input
+                                                        <input value={this.state.value}
                                                             onChange={event => this.setState({domain: event.target.value})}/>
                                                         <Button loading={this.state.loading} size='big' secondary
                                                                 type='submit'>Resolve</Button>
