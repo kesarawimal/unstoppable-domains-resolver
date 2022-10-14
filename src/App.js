@@ -168,8 +168,8 @@ class App extends Component {
                                                 <form onSubmit={this.onSubmit}>
                                                     <Input size='huge' type='text' placeholder='Search for NFT domains'
                                                            action>
-                                                        <input value={this.state.value}
-                                                            onChange={event => this.setState({domain: event.target.value})}/>
+                                                        <input value={this.state.domain}
+                                                            onChange={event => this.setState({domain: event.target.value, data: []})}/>
                                                         <Button loading={this.state.loading} size='big' secondary
                                                                 type='submit'>Resolve</Button>
                                                     </Input>
